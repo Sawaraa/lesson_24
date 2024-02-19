@@ -16,10 +16,6 @@ public class Schedule {
     public void removeSeance(Seance seance){
         seances.remove(seance);
     }
-    public void outputSeance(){
-        seances.forEach(System.out::println);
-    }
-
 
     @Override
     public String toString() {

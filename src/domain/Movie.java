@@ -1,6 +1,6 @@
 package domain;
 
-public class Movie {
+public class Movie{
     String title;
     Time duration;
 

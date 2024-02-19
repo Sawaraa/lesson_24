@@ -46,7 +46,6 @@ public class Cinema {
                 schedule.addSeance(seance);
                 schedules.put(day, schedule);
                 System.out.println("You add new seance");
-                System.out.println(schedules);
             }
            else{System.out.println("You enter the wrong day of week");}
         }
@@ -66,6 +65,12 @@ public class Cinema {
             else{System.out.println("You enter the wrong day of week");}
         }
         else {System.out.println("The cinema is closed during this time");}
+    }
+
+    public void outputSchedules(){
+        for(Schedule schedule : schedules.values()){
+            System.out.println(schedule);
+        }
     }
 
     public boolean isOpen(Time time){

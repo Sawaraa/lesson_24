@@ -14,7 +14,8 @@ public class Main {
                         + "3. Delete movie from Movies Library" + "\n"
                         + "4. Add new seance in schedules" + "\n"
                         + "5. Remove seance from schedules" + "\n"
-                        + "6. Exit" + "\n"
+                        + "6. Output schedules" + "\n"
+                        + "7. Exit" + "\n"
                         + "Enter your option");
 
     }
@@ -90,7 +91,11 @@ public class Main {
                     cinema.removeSeance(day,seance);
                 }
                     break;
-                case 6: {
+                case 6:{
+                    cinema.outputSchedules();
+                }
+                break;
+                case 7: {
                     System.exit(0);
                 }
                     break;
