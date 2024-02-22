@@ -24,20 +24,12 @@ public class Main {
         Time open = new Time(10, 0);
         Time close = new Time(23, 0);
         Cinema cinema = new Cinema(open,close);
-        Seance newSeance = new Seance();
         while (true) {
             list();
             int option = scanner.nextInt();
             switch (option) {
                 case 1:{
-                    System.out.println("Enter movie title:");
-                    String title = scanner.next();
-                    System.out.println("Enter movie duration:");
-                    int hour = scanner.nextInt();
-                    int min = scanner.nextInt();
-                    Time duration = new Time(hour, min);
-                    Movie movie = new Movie(title, duration);
-                    cinema.addMovie(movie);
+                      cinema.addMovie(infoMovie(scanner));
                 }
                     break;
                 case 2: {
@@ -45,50 +37,19 @@ public class Main {
                 }
                     break;
                 case 3: {
-                    System.out.println("Enter movie title:");
-                    String title = scanner.next();
-                    System.out.println("Enter movie duration:");
-                    int hour = scanner.nextInt();
-                    int min = scanner.nextInt();
-                    Time duration = new Time(hour, min);
-                    Movie movie = new Movie(title, duration);
-                    cinema.removeMovie(movie);
+                    cinema.removeMovie(infoMovie(scanner));
                 }
                     break;
                 case 4: {
                     System.out.println("Enter day");
                     String day = scanner.next();
-                    System.out.println("Enter movie title:");
-                    String title = scanner.next();
-                    System.out.println("Enter movie duration:");
-                    int hour = scanner.nextInt();
-                    int min = scanner.nextInt();
-                    Time duration = new Time(hour, min);
-                    Movie movie = new Movie(title, duration);
-                    System.out.println("Enter movie start time -");
-                    int hourStart = scanner.nextInt();
-                    int minStart = scanner.nextInt();
-                    Time startTime = new Time(hourStart, minStart);
-                    Seance seance= new Seance(movie,startTime,newSeance.calculateEndTime(startTime,duration));
-                    cinema.addSeance(day,seance);
+                    cinema.addSeance(day,infoSeance(scanner));
                 }
                     break;
                 case 5: {
                     System.out.println("Enter day");
                     String day = scanner.next();
-                    System.out.println("Enter movie title:");
-                    String title = scanner.next();
-                    System.out.println("Enter movie duration:");
-                    int hour = scanner.nextInt();
-                    int min = scanner.nextInt();
-                    Time duration = new Time(hour, min);
-                    Movie movie = new Movie(title, duration);
-                    System.out.println("Enter movie start time -");
-                    int hourStart = scanner.nextInt();
-                    int minStart = scanner.nextInt();
-                    Time startTime = new Time(hourStart, minStart);
-                    Seance seance= new Seance(movie,startTime,newSeance.calculateEndTime(startTime,duration));
-                    cinema.removeSeance(day,seance);
+                    cinema.removeSeance(day,infoSeance(scanner));
                 }
                     break;
                 case 6:{
@@ -106,5 +67,31 @@ public class Main {
 
 
 
+    }
+
+    public static Movie infoMovie(Scanner scanner){
+        System.out.println("Enter movie title:");
+        String title = scanner.next();
+        System.out.println("Enter movie duration:");
+        int hour = scanner.nextInt();
+        int min = scanner.nextInt();
+        Time duration = new Time(hour, min);
+        return new Movie(title,duration);
+    }
+
+    public static Seance infoSeance(Scanner scanner){
+        Seance newSeance = new Seance();
+        System.out.println("Enter movie title:");
+        String title = scanner.next();
+        System.out.println("Enter movie duration:");
+        int hour = scanner.nextInt();
+        int min = scanner.nextInt();
+        Time duration = new Time(hour, min);
+        Movie movie = new Movie(title, duration);
+        System.out.println("Enter movie start time -");
+        int hourStart = scanner.nextInt();
+        int minStart = scanner.nextInt();
+        Time startTime = new Time(hourStart, minStart);
+        return new Seance(movie,startTime,newSeance.calculateEndTime(startTime,duration));
     }
 }

@@ -2,8 +2,8 @@ package domain;
 
 public class Time implements Comparable<Time>{
 
-    int min;
-    int hour;
+   private final int min;
+   private final int hour;
 
     public Time(int hour, int min){
         if(hour < 0 || hour > 24){

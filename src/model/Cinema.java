@@ -21,6 +21,10 @@ public class Cinema {
         this.close = close;
     }
 
+    public Cinema(TreeMap<String, Schedule> schedules) {
+        this.schedules = schedules;
+    }
+
     public void addMovie(Movie movie){
         moviesLibrary.add(movie);
     }
@@ -30,10 +34,14 @@ public class Cinema {
     }
 
     public void removeMovie(Movie movie){
-        moviesLibrary.removeIf(movies -> movie.getTitle().equalsIgnoreCase(movies.getTitle()) &&
+       boolean remove = moviesLibrary.removeIf(movies -> movie.getTitle().equalsIgnoreCase(movies.getTitle()) &&
                 (movie.getDuration().getHour() == movies.getDuration().getHour())
                 && (movie.getDuration().getMin() == movies.getDuration().getMin()));
-        System.out.println("You successfully delete movie");
+       if(remove){
+           System.out.println("You successfully delete movie");
+       }
+       else { System.out.println("No matching movie found for deletion");}
+
     }
 
     public void addSeance(String day, Seance seance){
